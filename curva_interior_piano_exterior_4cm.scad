@@ -1,5 +1,7 @@
 include <BOSL2/std.scad>
 
+con_textura = false;
+
 // Pista base
 difference() {
     pie_slice(ang=45, l=8, r=(430/2)+40, $fn=256);
@@ -16,13 +18,17 @@ zrot_copies([-45 - 45/6,-45 - 45/2, -45 - (5*45/6)]) translate([-4/2,(430/2)+1, 
     }
 
 // Textura pista
-tex = texture("rough");
-translate([0,0,7]) intersection() {
-    translate ([430/4,0,1]) yrot(90) linear_sweep(
-    square([1,430/2+40]), texture=tex, h=430/3+40,
-    tex_size=[10,10], style="min_edge");
-    translate([0,0, -1]) #difference() {
-    pie_slice(ang=45, l=8, r=(430/2)+40, $fn=256);
-    zrot(-5) pie_slice(ang=55, l=8, r=(430/2), $fn=256);
+if (con_textura) {
+    tex = texture("rough");
+    translate([0,0,7]) intersection() {
+        translate ([430/4,0,1]) yrot(90) linear_sweep(
+        square([1,430/2+40]), texture=tex, h=430/3+40,
+        tex_size=[10,10], style="min_edge");
+        translate([0,0, -1]) #difference() {
+                pie_slice(ang=45, l=8, r=(430/2)+40, $fn=256);
+                zrot(-5) pie_slice(ang=55, l=8, r=(430/2), $fn=256);
+            }
+    }
+
 }
-}
+
