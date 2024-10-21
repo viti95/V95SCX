@@ -1,11 +1,17 @@
 include <BOSL2/std.scad>
 
-con_textura = false;
+con_textura = false; // Textura pista
+con_sujeccion = true; // Sujeccion madera
 
 // Pista base
 difference() {
     pie_slice(ang=45, l=8, r=118.5/2, $fn=256);
     zrot(-5) pie_slice(ang=55, l=8, r=(118.5/2)-40, $fn=256);
+    move ([40*cos(45/2),40*sin(45/2)])
+    if (con_sujeccion) {
+        cylinder(h=4,r=7, $fn=256);
+        translate([0,0,4]) cylinder(h=4, r1=7, r2=3, $fn=256);
+    }
 }
 
 // Sujecciones pista principal
@@ -27,6 +33,11 @@ if (con_textura) {
             translate([0,0, -1]) #difference() {
                     pie_slice(ang=45, l=8, r=118.5/2, $fn=256);
                     zrot(-5) pie_slice(ang=55, l=8, r=(118.5/2)-40, $fn=256);
+                    move ([40*cos(45/2),40*sin(45/2)])
+                    if (con_sujeccion) {
+                        cylinder(h=4,r=7, $fn=256);
+                        translate([0,0,4]) cylinder(h=4, r1=7, r2=3, $fn=256);
+                    }
                 }
         }
 }
