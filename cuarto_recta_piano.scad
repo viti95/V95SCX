@@ -7,7 +7,7 @@ con_sujeccion = true; // Sujeccion madera
 difference() {
     cube([350/4,40,8]);
     if (con_sujeccion) {
-        xcopies([350/6, 350/12]) back(20) up(8) zflip() union() {
+        xcopies([350/6+5, 350/12-5]) back(20) up(8) zflip() union() {
                 cylinder(h=4,r=7/2, $fn=256);
                 translate([0,0,4]) #cylinder(h=4, r1=7/2, r2=3/2, $fn=256);
             }
