@@ -15,7 +15,7 @@ difference() {
 }
 
 // Sujecciones pista principal
-xcopies([350/8, 350/24, 5 * 350 / 24]) left(6) up(5) xrot(180) union() {
+xcopies([350/8, 350/24, 5 * 350 / 24]) back(1) left(6) up(5) xrot(180) union() {
     translate([0, 2.9, 0]) cube([4,2,5]);
     color("orange") translate([0, 0, 4.1]) cube([8,4.9,0.9]);
     color("blue") translate([5, 3.9, 4.1]) yrot(180) prismoid(size1=[6,2], size2=[0,2], shift=[2/2,0], h=4.1);
