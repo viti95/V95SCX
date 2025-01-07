@@ -1,6 +1,5 @@
 include <BOSL2/std.scad>
 
-con_textura = false; // Textura pista
 con_sujeccion = true; // Sujeccion madera
 
 // Pista base
